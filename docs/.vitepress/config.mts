@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/hkh-trading/',
   title: "HKH-trading",
-  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/trade-bot-site/4a238427290248c9965c310afd7513e0a0199eb8/public/images/robot.svg' }]],
+  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkt/286893c4f5927f1ce7c4cfa6e23f2c9b5ea4c7b4/docs/images/stock-up.svg' }]],
   description: "Automate crypto pair trading",
   lastUpdated: true,
   themeConfig: {
@@ -12,7 +12,7 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025-present TBOTs'
     },
-    logo: 'https://raw.githubusercontent.com/201508876PMH/trade-bot-site/4a238427290248c9965c310afd7513e0a0199eb8/public/images/robot.svg',
+    logo: 'https://raw.githubusercontent.com/201508876PMH/hkt/286893c4f5927f1ce7c4cfa6e23f2c9b5ea4c7b4/docs/images/stock-up.svg',
     search: {
       provider: 'local'
     },
