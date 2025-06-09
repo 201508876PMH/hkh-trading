@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: T-BOTs 
-  text: "Trading automated "
-  tagline: Crypto pair trading using advanced strategies and real-time market data
+  name: HKH Trading
+  text: "Forex with focus"
+  tagline: Strategic trading, transparent results & tracking progress with live market insights
   image:
     src: 'https://raw.githubusercontent.com/201508876PMH/trade-bot-site/9d7a2d61110942842c92b3a805fbc0b23cb1a2bc/public/images/robot.svg'
     alt: VitePress

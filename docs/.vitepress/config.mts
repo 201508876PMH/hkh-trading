@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/trade-bot-site/',
-  title: "T-BOTs",
+  base: '/hkh-trading/',
+  title: "HKH-trading",
   head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/trade-bot-site/4a238427290248c9965c310afd7513e0a0199eb8/public/images/robot.svg' }]],
   description: "Automate crypto pair trading",
   lastUpdated: true,
