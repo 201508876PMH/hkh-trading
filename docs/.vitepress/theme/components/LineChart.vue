@@ -46,6 +46,7 @@ export default {
       chartData: null,
       chartOptions: {
         responsive: true,
+        maintainAspectRatio: false,
         pointStyle: 'rectRot',
         pointRadius: 5,
         pointHoverRadius: 10,
@@ -131,10 +132,11 @@ export default {
   width: 100%;
   max-width: 100%;
   height: auto;
+  padding: 1rem 0;
 }
 
-#cumulative-profit-chart {
+canvas {
   width: 100% !important;
-  height: auto !important;
+  height: 400px;
 }
 </style>

@@ -25,7 +25,7 @@ export default {
       chartData: null,
       chartOptions: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         aspectRatio: 2,
         plugins: {
           legend: { display: false },
@@ -91,7 +91,7 @@ export default {
 
 canvas {
   width: 100% !important;
-  height: auto !important;
+  height: 400px;
 }
 </style>
 
