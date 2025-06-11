@@ -5,7 +5,7 @@ import timeline from "vitepress-markdown-timeline";
 export default defineConfig({
   base: '/hkh-trading/',
   title: "HKH-trading",
-  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/e2c1be335d688d105dd950f23b11c83974d43858/docs/images/stock-up.svg' }]],
+  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/c6185e8487a39cc7c98887f82b91aa7318d933b3/docs/images/stock-up.svg' }]],
   description: "Automate crypto pair trading",
   lastUpdated: true,
   themeConfig: {
@@ -13,7 +13,7 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2025-present HKH Trading'
     },
-    logo: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/e2c1be335d688d105dd950f23b11c83974d43858/docs/images/stock-up.svg',
+    logo: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/c6185e8487a39cc7c98887f82b91aa7318d933b3/docs/images/stock-up.svg',
     search: {
       provider: 'local'
     },

@@ -7,7 +7,7 @@ hero:
   text: "Forex with focus"
   tagline: Strategic trading, transparent results & tracking progress with live market insights
   image:
-    src: 'https://raw.githubusercontent.com/201508876PMH/hkt/76a7fa0ad22fa17e0e1f73a21675e8d4f13939bf/docs/images/stock-up.svg'
+    src: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/c6185e8487a39cc7c98887f82b91aa7318d933b3/docs/images/forex.svg'
     alt: VitePress
   actions:
     - theme: brand
