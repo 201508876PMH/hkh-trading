@@ -87,11 +87,14 @@ Below is a summary of all recorded trades, automatically generated from the late
     `;
   }
 
-  (async () => {
+(async () => {
+  if (typeof window !== 'undefined') {
     const data = await fetchAndParseCSV('/hkh-trading/data/latest.csv'); // adjust path
     const tableHTML = renderSummaryTable(data);
     document.getElementById('summary-table').innerHTML = tableHTML;
-  })();
+  }
+})();
+
 </script>
 
 <style>

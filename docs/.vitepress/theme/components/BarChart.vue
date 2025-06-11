@@ -43,38 +43,40 @@ export default {
     }
   },
   mounted() {
-    fetch('/hkh-trading/data/latest.csv')
-      .then((response) => response.text())
-      .then((csv) => {
-        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
+    if (typeof window !== 'undefined') {
+      fetch('/hkh-trading/data/latest.csv')
+        .then((response) => response.text())
+        .then((csv) => {
+          const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
 
-        // Sort trades by the Open date (ascending)
-        const sortedData = parsed.data.sort((a, b) => {
-          return new Date(a.Open) - new Date(b.Open)
+          // Sort trades by the Open date (ascending)
+          const sortedData = parsed.data.sort((a, b) => {
+            return new Date(a.Open) - new Date(b.Open)
+          })
+
+          const labels = []
+          const profits = []
+
+
+          parsed.data.forEach((row) => {
+            labels.push(row.Open)
+            profits.push(parseFloat(row.Profit.replace(',', '.')))
+          })
+
+          this.chartData = {
+            labels,
+            datasets: [
+              {
+                label: 'Profit (€)',
+                data: profits,
+                backgroundColor: profits.map(p => p >= 0 ? 'rgba(0, 200, 83, 0.6)' : 'rgba(255, 82, 82, 0.6)')
+              }
+            ]
+          }
         })
-
-        const labels = []
-        const profits = []
-
-
-        parsed.data.forEach((row) => {
-          labels.push(row.Open)
-          profits.push(parseFloat(row.Profit.replace(',', '.')))
-        })
-
-        this.chartData = {
-          labels,
-          datasets: [
-            {
-              label: 'Profit (€)',
-              data: profits,
-              backgroundColor: profits.map(p => p >= 0 ? 'rgba(0, 200, 83, 0.6)' : 'rgba(255, 82, 82, 0.6)')
-            }
-          ]
-        }
-      })
-      .catch((err) => console.error('Error loading CSV:', err))
-  }
+        .catch((err) => console.error('Error loading CSV:', err))
+      }
+    }
 }
 </script>
 

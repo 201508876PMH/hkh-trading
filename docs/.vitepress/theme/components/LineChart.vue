@@ -74,51 +74,53 @@ export default {
     }
   },
   mounted() {
-    fetch('/hkh-trading/data/latest.csv')
-      .then((res) => res.text())
-      .then((csv) => {
-        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
+    if (typeof window !== 'undefined') {
+      fetch('/hkh-trading/data/latest.csv')
+        .then((res) => res.text())
+        .then((csv) => {
+          const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
 
-        const trades = parsed.data
-          .map((row) => {
-            const profit = parseFloat(row.Profit.replace(',', '.'))
-            const time = new Date(row.Open)
-            return { time, profit }
+          const trades = parsed.data
+            .map((row) => {
+              const profit = parseFloat(row.Profit.replace(',', '.'))
+              const time = new Date(row.Open)
+              return { time, profit }
+            })
+            .filter(entry => !isNaN(entry.time.getTime()) && !isNaN(entry.profit))
+            .sort((a, b) => a.time - b.time)
+
+          let cumulative = 0
+          const labels = []
+          const dataPoints = []
+
+          trades.forEach(({ time, profit }) => {
+            cumulative += profit
+            labels.push(time)
+            dataPoints.push(cumulative)
           })
-          .filter(entry => !isNaN(entry.time.getTime()) && !isNaN(entry.profit))
-          .sort((a, b) => a.time - b.time)
 
-        let cumulative = 0
-        const labels = []
-        const dataPoints = []
-
-        trades.forEach(({ time, profit }) => {
-          cumulative += profit
-          labels.push(time)
-          dataPoints.push(cumulative)
-        })
-
-        this.chartData = {
-          labels,
-          datasets: [
-            {
-              label: 'Cumulative Profit (€)',
-              data: dataPoints,
-              borderColor: 'rgba(0, 123, 255, 0.9)',
-              backgroundColor: 'rgba(0, 123, 255, 0.3)',
-              fill: true,
-              tension: 0.0,
-              segment: {
-                borderColor: ctx => {
-                const { p0, p1 } = ctx;
-                return p1.parsed.y >= p0.parsed.y ? 'rgba(0, 200, 83, 0.9)' : 'rgba(255, 82, 82, 0.9)';
+          this.chartData = {
+            labels,
+            datasets: [
+              {
+                label: 'Cumulative Profit (€)',
+                data: dataPoints,
+                borderColor: 'rgba(0, 123, 255, 0.9)',
+                backgroundColor: 'rgba(0, 123, 255, 0.3)',
+                fill: true,
+                tension: 0.0,
+                segment: {
+                  borderColor: ctx => {
+                  const { p0, p1 } = ctx;
+                  return p1.parsed.y >= p0.parsed.y ? 'rgba(0, 200, 83, 0.9)' : 'rgba(255, 82, 82, 0.9)';
+                  }
                 }
               }
-            }
-          ]
-        }
-      })
-      .catch((err) => console.error('Error loading CSV:', err))
+            ]
+          }
+        })
+        .catch((err) => console.error('Error loading CSV:', err))
+     }
   }
 }
 </script>
