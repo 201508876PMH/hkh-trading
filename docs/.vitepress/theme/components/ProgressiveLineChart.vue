@@ -158,7 +158,6 @@ export default {
   position: relative;
   width: 100%;
   max-width: 100%;
-  margin-top: 2rem;
   height: 350px;
 }
 #progressive-line-chart {
