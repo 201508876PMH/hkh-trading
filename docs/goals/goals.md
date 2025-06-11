@@ -1,14 +1,8 @@
-# Goals & Roadmap
+# Goals
 This section serves to give an overview of my current goals and future roadmap. It’s a place to document progress, share ambitions, and reflect openly on where things are heading.
-
-By outlining milestones, active priorities, and long-term plans, I aim to stay focused, adapt intentionally, and maintain transparency in my journey. Whether it's refining strategy, building tools, or navigating setbacks, this roadmap is a living document of purpose, discipline, and growth.
-
 
 ## Trading goals (monthly consistency, scaling to 200k)
 bla. bla. bla.
-
-## Milestones (passed challenge, scaling account, etc.)
-[Jump to Goals & Roadmap](#goals--roadmap)
 
 
 ## Visual roadmap

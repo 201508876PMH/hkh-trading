@@ -7,3 +7,51 @@
     --vp-button-brand-bg: #6aa1b7;
     --vp-button-brand-hover-bg: #8CCCD5;
   }
+  .win {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 0.1em 0.2em;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.loss {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.1em 0.2em;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* WIN CONTAINER */
+.custom-block.win {
+  border-left: 4px solid #4CAF50;
+  background-color: #f0fdf4;
+  padding: 1em;
+  border-radius: 6px;
+}
+.custom-block.win p {
+  color: #2e7d32;
+  margin: 0.2em 0;
+}
+
+/* LOSS CONTAINER */
+.custom-block.loss {
+  border-left: 4px solid #F44336;
+  background-color: #fff0f0;
+  padding: 1em;
+  border-radius: 6px;
+}
+.custom-block.loss p {
+  color: #c62828;
+  margin: 0.2em 0;
+}
+
+/* Optional styling for .win and .loss badges */
+.win {
+  color: #2e7d32;
+  font-weight: bold;
+}
+.loss {
+  color: #c62828;
+  font-weight: bold;
+}

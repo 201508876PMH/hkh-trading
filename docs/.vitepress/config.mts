@@ -27,7 +27,7 @@ export default defineConfig({
           { text: 'Journal', link: '/journal/journal' }
         ]
       },
-      { text: 'Goals & Roadmap', link: '/goals/goals' },
+      { text: 'Goals & Milestones', link: '/goals/goals' },
     ],
     sidebar: {
        '/ftmo/': [
@@ -51,6 +51,15 @@ export default defineConfig({
         text: 'Journal',
         items: [
           { text: 'Journal', link: '/journal/journal' }
+        ]
+      }
+    ],
+     '/goals/': [
+      {
+        text: 'Goals & Milestones',
+        items: [
+          { text: 'Goals', link: '/goals/goals' },
+          { text: 'Milestones', link: '/goals/milestones' }
         ]
       }
     ],
