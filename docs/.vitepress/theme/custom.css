@@ -6,18 +6,4 @@
 
     --vp-button-brand-bg: #6aa1b7;
     --vp-button-brand-hover-bg: #8CCCD5;
-    --vp-layout-max-width: clamp(80%, 90vw, 1750px);
-  }
-
-
-  .VPDoc:not(.has-sidebar) .container {
-    max-width: clamp(100%, 85vw, 1414px) !important;
-  }
-
-  .VPDoc:not(.has-sidebar) .content {
-    max-width: clamp(100%, 70vw, 1094px) !important;
-  }
-
-  .VPDoc.has-aside .content-container {
-    max-width: clamp(100%, 70vw, 1002px) !important;
   }

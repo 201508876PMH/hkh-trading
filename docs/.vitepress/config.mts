@@ -1,41 +1,59 @@
 import { defineConfig } from 'vitepress'
+import timeline from "vitepress-markdown-timeline";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/hkh-trading/',
   title: "HKH-trading",
-  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkt/286893c4f5927f1ce7c4cfa6e23f2c9b5ea4c7b4/docs/images/stock-up.svg' }]],
+  head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkt/76a7fa0ad22fa17e0e1f73a21675e8d4f13939bf/docs/images/stock-up.svg' }]],
   description: "Automate crypto pair trading",
   lastUpdated: true,
   themeConfig: {
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2025-present TBOTs'
+      copyright: 'Copyright © 2025-present HKH Trading'
     },
-    logo: 'https://raw.githubusercontent.com/201508876PMH/hkt/286893c4f5927f1ce7c4cfa6e23f2c9b5ea4c7b4/docs/images/stock-up.svg',
+    logo: 'https://raw.githubusercontent.com/201508876PMH/hkt/76a7fa0ad22fa17e0e1f73a21675e8d4f13939bf/docs/images/stock-up.svg',
     search: {
       provider: 'local'
     },
     nav: [
       { text: 'Home', link: '/' },
       { 
-        text: 'Strategies',
+        text: 'Trading',
         items: [
-          { text: 'BBScalper', link: '/bbscalper/stats' }
+          { text: 'FTMO Challenge', link: '/ftmo/purpose' },
+          { text: 'Performance', link: '/performance/performance' },
+          { text: 'Journal', link: '/journal/journal' }
         ]
       },
-      { text: 'Team', link: '/team' },
+      { text: 'Goals & Roadmap', link: '/goals/goals' },
     ],
     sidebar: {
-       '/bbscalper/': [
+       '/ftmo/': [
       {
-        text: 'Overview',
+        text: 'FTMO Challenge',
         items: [
-          { text: 'Stats', link: '/bbscalper/stats' },
-          { text: 'Plots', link: '/bbscalper/plots' }
+          { text: 'Purpose', link: '/ftmo/purpose' }
         ]
       }
-    ]
+    ],
+      '/performance/': [
+      {
+        text: 'Performance',
+        items: [
+          { text: 'Performance', link: '/performance/performance' }
+        ]
+      }
+    ],
+     '/journal/': [
+      {
+        text: 'Journal',
+        items: [
+          { text: 'Journal', link: '/journal/journal' }
+        ]
+      }
+    ],
     },
 
     socialLinks: [
@@ -53,6 +71,10 @@ export default defineConfig({
         link: 'https://ftui.pmh-unraid.dk/' 
       }
     ]
+  },
+  markdown: {
+    config: (md) => {
+      md.use(timeline);
+    }
   }
-})
-
+});
