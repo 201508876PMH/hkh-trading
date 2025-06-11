@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/hkh-trading/',
   title: "HKH-trading",
   head: [['link', { rel: 'icon', href: 'https://raw.githubusercontent.com/201508876PMH/hkh-trading/c6185e8487a39cc7c98887f82b91aa7318d933b3/docs/images/stock-up.svg' }]],
-  description: "Automate crypto pair trading",
+  description: "HKH Forex trading",
   lastUpdated: true,
   themeConfig: {
     footer: {
