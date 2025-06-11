@@ -11,11 +11,11 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Performance
+      link: /performance/performance
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: FTMO
+      link: /ftmo/purpose
 
 #features:
 #  - title: Feature A
@@ -27,10 +27,4 @@ hero:
 #---
 
 ---
-<!-- Wide banner or big image below -->
-<div style="max-width: 1600px; margin: 1rem auto 0 auto;">
-  <img src="https://raw.githubusercontent.com/201508876PMH/hkt/76a7fa0ad22fa17e0e1f73a21675e8d4f13939bf/docs/images/stock-up.svg" 
-       alt="Wide banner" 
-       style="width: 100%; height: auto; border-radius: 12px;" />
-</div>
-
+<ProgressiveLineChart />

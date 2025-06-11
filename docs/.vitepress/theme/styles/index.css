@@ -10,6 +10,18 @@ html.dark {
   color: #9b9898;
   box-sizing: border-box;
 }
+.completed {
+  color: green;
+  font-weight: 600;
+}
+
+/* optionally add a nice check icon with ::before */
+.completed::before {
+  content: "✔️ ";
+  color: green;
+  font-weight: bold;
+}
+
 .timeline-dot::before {
   position: absolute;
   left: 0;
