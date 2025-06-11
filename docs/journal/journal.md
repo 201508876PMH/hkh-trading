@@ -1,9 +1,13 @@
 # Journal
-Trading diary + lessons learned.
-Blog-style posts (e.g., “How I handled drawdown this week”)
 
-One post per trade or per week
+This Trading Journal serves as a structured record of my trading activities and insights. It is designed to document individual trades or weekly summaries in a clear, concise format.
 
-Include mistakes, adjustments, mindset
+The goal of this journal is to facilitate continuous improvement through disciplined review and critical evaluation. By maintaining regular, detailed posts, I aim to enhance transparency, accountability, and learning in my trading practice.
 
-Markdown-friendly for VitePress
+
+<p>&nbsp;</p>
+
+::: timeline 2025-06-06
+The first step of the FTMO Evaluation Process has been completed. 
+<img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 400px; margin-top: 1rem;" />
+:::
