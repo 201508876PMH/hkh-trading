@@ -45,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    fetch('/hkh-trading/data/latest.csv')
+    fetch('/hkh-trading/latest.csv')
       .then(res => res.text())
       .then(csv => {
         const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
