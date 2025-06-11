@@ -88,7 +88,7 @@ Below is a summary of all recorded trades, automatically generated from the late
   }
 
   (async () => {
-    const data = await fetchAndParseCSV('../data/latest.csv'); // adjust path
+    const data = await fetchAndParseCSV('/data/latest.csv'); // adjust path
     const tableHTML = renderSummaryTable(data);
     document.getElementById('summary-table').innerHTML = tableHTML;
   })();

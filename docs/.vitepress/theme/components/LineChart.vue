@@ -74,7 +74,7 @@ export default {
     }
   },
   mounted() {
-    fetch('../data/latest.csv')
+    fetch('/data/latest.csv')
       .then((res) => res.text())
       .then((csv) => {
         const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true })
