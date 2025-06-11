@@ -40,6 +40,7 @@ export default {
       chartData: null,
       chartOptions: {
         responsive: true,
+        maintainAspectRatio: false,
         animation: this.getAnimation(),
         interaction: {
           intersect: false
@@ -158,9 +159,10 @@ export default {
   width: 100%;
   max-width: 100%;
   margin-top: 2rem;
+  height: 350px;
 }
 #progressive-line-chart {
   width: 100% !important;
-  height: auto !important;
+  height: 350px;
 }
 </style>
