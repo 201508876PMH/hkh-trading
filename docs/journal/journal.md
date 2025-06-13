@@ -46,3 +46,24 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
 > </details>
 
+## 2024-12-23 23:20 <span class="win">NOTE +€100202020202</span>
+> [!NOTE] <span class="win">NOTE</span>  
+> adawwdada  
+> 
+> <details open>
+> <summary>📂 Details</summary>
+> 
+> * **Pair**: <code>ETH/USDT</code>
+> * **Bias**: 📈 Bullish
+> * **Liquidity**: 1
+> * **POI**: 1
+> * **Outcome**: <span class="win">NOTE</span>
+> * **P/L**: <span class="pl-circle">+€100202020202</span>
+> 
+> </details>
+> 
+> <details>
+> <summary>📎 Attachment</summary>
+> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> </details>
+
