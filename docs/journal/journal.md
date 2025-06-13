@@ -48,3 +48,24 @@ The goal of this journal is to facilitate continuous improvement through discipl
 
 
 ## 2023-21-21 23:20 <span class=loss>Loss +9</span>
+## 2032-23-21 23:30 <span class="win">Win +€123333</span>
+> [!WIN] <span class="win">Win</span>  
+> adadada  
+> 
+> <details open>
+> <summary>📂 Details</summary>
+> 
+> * **Pair**: <code>BTC/USDT</code>
+> * **Bias**: 📈 Bullish
+> * **Liquidity**: 1
+> * **POI**: 1
+> * **Outcome**: <span class="win">Win</span>
+> * **P/L**: <span class="pl-circle">+€123333</span>
+> 
+> </details>
+> 
+> <details>
+> <summary>📎 Attachment</summary>
+> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> </details>
+
