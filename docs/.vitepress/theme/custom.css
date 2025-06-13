@@ -23,16 +23,16 @@
   }
 
 /* Light mode styles */
-.custom-block.note {
-  background-color: #d3f2e1; /* light green */
-  color: #1b4332;            /* deep green text */
-}
+/*.custom-block.note {
+/*  background-color: #d3f2e1; /* light green */
+/*  color: #1b4332;            /* deep green text */
+/*}
 
 /* Dark mode styles */
-.dark .custom-block.note {
-  background-color: #1b4332; /* darker green */
-  color: #d3f2e1;            /* light green text */
-}
+/*.dark .custom-block.note {
+/*  background-color: #1b4332; /* darker green */
+/*  color: #d3f2e1;            /* light green text */
+/*} */
 
 .win {
   background-color: #d4edda;

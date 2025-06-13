@@ -18,14 +18,6 @@ on:
         options:
           - 'Bullish 📈'
           - 'Bearish 📉'
-      liquidity:
-        description: 'Liquidity'
-        required: true
-        type: string
-      poi:
-        description: 'Point of Interest'
-        required: true
-        type: string
       outcome:
         description: 'Outcome'
         required: true
@@ -80,8 +72,6 @@ jobs:
           - pair: ${{ inputs.pair }}
             datetime: "${{ inputs.datetime }}"
             bias: $BIAS
-            liquidity: "${{ inputs.liquidity }}"
-            poi: "${{ inputs.poi }}"
             outcome: "$OUTCOME"
             pl: "${{ inputs.pl }}"
             notes: "${{ inputs.notes }}"
@@ -136,8 +126,6 @@ jobs:
           NOTES="${{ github.event.inputs.notes }}"
           PAIR="${{ github.event.inputs.pair }}"
           DATETIME="${{ github.event.inputs.datetime }}"
-          LIQUIDITY="${{ github.event.inputs.liquidity }}"
-          POI="${{ github.event.inputs.poi }}"
 
           if [ "$BIAS" = "Bullish" ]; then
             BIAS_DISPLAY="📈 Bullish"
@@ -168,7 +156,7 @@ jobs:
           fi
 
           echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
-          echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>  " >> docs/journal/journal.md
+          echo "> [!NOTE] <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>  " >> docs/journal/journal.md
           echo "> $NOTES  " >> docs/journal/journal.md
           echo "> " >> docs/journal/journal.md
           echo "> <details open>" >> docs/journal/journal.md
@@ -176,9 +164,7 @@ jobs:
           echo "> " >> docs/journal/journal.md
           echo "> * **Pair**: <code>$PAIR</code>" >> docs/journal/journal.md
           echo "> * **Bias**: $BIAS_DISPLAY" >> docs/journal/journal.md
-          echo "> * **Liquidity**: $LIQUIDITY" >> docs/journal/journal.md
-          echo "> * **POI**: $POI" >> docs/journal/journal.md
-          echo "> * **Outcome**: <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>" >> docs/journal/journal.md
+          echo "> * **Outcome**: <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>" >> docs/journal/journal.md
           echo "> * **P/L**: <span class=\"$PL_CLASS\">$FORMATTED_PL</span>" >> docs/journal/journal.md
           echo "> " >> docs/journal/journal.md
           echo "> </details>" >> docs/journal/journal.md

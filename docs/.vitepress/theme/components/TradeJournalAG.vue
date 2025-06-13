@@ -69,8 +69,8 @@ const columnDefs = [
         </div>`;
     },
   },
-  { headerName: 'Liquidity', field: 'liquidity', flex: 1, minWidth: 140, cellStyle: { textAlign: 'center' } },
-  { headerName: 'POI', field: 'poi', flex: 1, minWidth: 120, cellStyle: { textAlign: 'center' } },
+  //{ headerName: 'Liquidity', field: 'liquidity', flex: 1, minWidth: 140, cellStyle: { textAlign: 'center' } },
+  //{ headerName: 'POI', field: 'poi', flex: 1, minWidth: 120, cellStyle: { textAlign: 'center' } },
   {
     headerName: 'Outcome',
     field: 'outcome',
