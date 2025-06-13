@@ -154,7 +154,7 @@ jobs:
           if [ -z "$NOTES" ]; then
             NOTES="_No additional notes provided._"
           fi
-
+          echo "" >> docs/journal/journal.md
           echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS $FORMATTED_PL</span>" >> docs/journal/journal.md
           echo "> [!NOTE] <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>  " >> docs/journal/journal.md
           echo "> $NOTES  " >> docs/journal/journal.md
