@@ -51,3 +51,12 @@
   outcome: "Loss"
   pl: "-50"
   notes: "adadad"
+
+- pair: BTC/USDT
+  datetime: "2032-01-33"
+  bias: Bearish
+  liquidity: "1"
+  poi: "1"
+  outcome: "Loss"
+  pl: "+100"
+  notes: "aeaeaeaeae"
