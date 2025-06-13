@@ -87,3 +87,12 @@
   outcome: "Win"
   pl: "-50"
   notes: "adadadawd"
+
+- pair: BTC/USDT
+  datetime: "2032-23-21 23:30"
+  bias: Bullish
+  liquidity: "1"
+  poi: "1"
+  outcome: "Win"
+  pl: "+123333"
+  notes: "adadada"
