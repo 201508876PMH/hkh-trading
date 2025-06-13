@@ -1,0 +1,9 @@
+
+- pair: GBP/JPY
+  datetime: "2025-06-13 18:04"
+  bias: Bullish
+  liquidity: "X"
+  poi: "X"
+  outcome: "Win"
+  pl: "+2458"
+  notes: "Limit på fib50, stop under fib50 (movede stop til PA candle)"
