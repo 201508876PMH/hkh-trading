@@ -205,7 +205,7 @@ jobs:
         - name: Commit journal update
           run: |
             git add docs/journal/journal.md
-            git commit -m "Add new journal entry for $DATETIME" || echo "No changes to commit"
+            git commit -m "Add new journal entry"
 
         - name: Push changes
           uses: ad-m/github-push-action@master
