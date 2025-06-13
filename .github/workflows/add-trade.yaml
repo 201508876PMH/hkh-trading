@@ -32,10 +32,9 @@ on:
         type: choice
         options:
           - Win ✅
-          - Loss ❌ 
-          - Break-even 🚥
+          - Loss ❌
       pl:
-        description: 'P/L (e.g., +100, -50, 0)'
+        description: 'P/L (e.g., +100, -50)'
         required: true
         type: string
       notes:
@@ -66,18 +65,15 @@ jobs:
       - name: Append new entry
         working-directory: docs/public/data
         run: |
-          # Strip emojis from bias
           BIAS="${{ inputs.bias }}"
           BIAS="${BIAS//📈/}"
           BIAS="${BIAS//📉/}"
-          BIAS="$(echo "$BIAS" | xargs)"  # Trim whitespace
+          BIAS="$(echo "$BIAS" | xargs)"
 
-          # Strip emojis from outcome
           OUTCOME="${{ inputs.outcome }}"
           OUTCOME="${OUTCOME//✅/}"
           OUTCOME="${OUTCOME//❌/}"
-          OUTCOME="${OUTCOME//🚥/}"
-          OUTCOME="$(echo "$OUTCOME" | xargs)"  # Trim whitespace
+          OUTCOME="$(echo "$OUTCOME" | xargs)"
 
           cat <<EOF >> data.yaml
 
@@ -112,115 +108,105 @@ jobs:
     needs: summary
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@master
-          with:
-            repository: 201508876PMH/hkh-trading
-            token: ${{ secrets.GH_PAT }}
+      - uses: actions/checkout@master
+        with:
+          repository: 201508876PMH/hkh-trading
+          token: ${{ secrets.GH_PAT }}
 
-        - name: Verify confirmation
-          run: |
-            if [[ "${{ github.event.inputs.confirm }}" != "true" ]]; then
-              echo "You must confirm all data is correct by checking the confirm box."
-              exit 1
-            fi
+      - name: Verify confirmation
+        run: |
+          if [[ "${{ github.event.inputs.confirm }}" != "true" ]]; then
+            echo "You must confirm all data is correct by checking the confirm box."
+            exit 1
+          fi
 
-        - name: Generate and append journal entry
-          run: |
-            BIAS="${{ github.event.inputs.bias }}"
-            BIAS="${BIAS//📈/}"
-            BIAS="${BIAS//📉/}"
-            BIAS="$(echo "$BIAS" | xargs)"
+      - name: Generate and append journal entry
+        run: |
+          BIAS="${{ github.event.inputs.bias }}"
+          BIAS="${BIAS//📈/}"
+          BIAS="${BIAS//📉/}"
+          BIAS="$(echo "$BIAS" | xargs)"
 
-            OUTCOME="${{ github.event.inputs.outcome }}"
-            OUTCOME="${OUTCOME//✅/}"
-            OUTCOME="${OUTCOME//❌/}"
-            OUTCOME="${OUTCOME//🚥/}"
-            OUTCOME="$(echo "$OUTCOME" | xargs)"
+          OUTCOME="${{ github.event.inputs.outcome }}"
+          OUTCOME="${OUTCOME//✅/}"
+          OUTCOME="${OUTCOME//❌/}"
+          OUTCOME="$(echo "$OUTCOME" | xargs)"
 
-            PL="${{ github.event.inputs.pl }}"
-            NOTES="${{ github.event.inputs.notes }}"
-            PAIR="${{ github.event.inputs.pair }}"
-            DATETIME="${{ github.event.inputs.datetime }}"
-            LIQUIDITY="${{ github.event.inputs.liquidity }}"
-            POI="${{ github.event.inputs.poi }}"
+          PL="${{ github.event.inputs.pl }}"
+          NOTES="${{ github.event.inputs.notes }}"
+          PAIR="${{ github.event.inputs.pair }}"
+          DATETIME="${{ github.event.inputs.datetime }}"
+          LIQUIDITY="${{ github.event.inputs.liquidity }}"
+          POI="${{ github.event.inputs.poi }}"
 
-            # Bias display
-            if [ "$BIAS" = "Bullish" ]; then
-              BIAS_DISPLAY="📈 Bullish"
-            elif [ "$BIAS" = "Bearish" ]; then
-              BIAS_DISPLAY="📉 Bearish"
-            else
-              BIAS_DISPLAY="$BIAS"
-            fi
+          if [ "$BIAS" = "Bullish" ]; then
+            BIAS_DISPLAY="📈 Bullish"
+          elif [ "$BIAS" = "Bearish" ]; then
+            BIAS_DISPLAY="📉 Bearish"
+          else
+            BIAS_DISPLAY="$BIAS"
+          fi
 
-            # Outcome styling
-            if [ "$OUTCOME" = "Win" ]; then
-              OUTCOME_CLASS="win"
-              OUTCOME_LABEL="Win"
-              PL_CLASS="pl-circle"
-            elif [ "$OUTCOME" = "Loss" ]; then
-              OUTCOME_CLASS="loss"
-              OUTCOME_LABEL="Loss"
-              PL_CLASS="pl-circle pl-negative"
-            else
-              OUTCOME_CLASS="note"
-              OUTCOME_LABEL="Break-even"
-              PL_CLASS="pl-circle"
-            fi
+          if [ "$OUTCOME" = "Win" ]; then
+            OUTCOME_CLASS="win"
+            OUTCOME_LABEL="Win"
+            PL_CLASS="pl-circle"
+          else
+            OUTCOME_CLASS="loss"
+            OUTCOME_LABEL="Loss"
+            PL_CLASS="pl-circle pl-negative"
+          fi
 
-            # Format P/L value
-            if [[ "$PL" == -* ]]; then
-              FORMATTED_PL="-€${PL#-}"
-            else
-              FORMATTED_PL="+€${PL#+}"
-            fi
+          if [[ "$PL" == -* ]]; then
+            FORMATTED_PL="-€${PL#-}"
+          else
+            FORMATTED_PL="+€${PL#+}"
+          fi
 
-            # Notes fallback
-            if [ -z "$NOTES" ]; then
-              NOTES="_No additional notes provided._"
-            fi
+          if [ -z "$NOTES" ]; then
+            NOTES="_No additional notes provided._"
+          fi
 
-            # Append to journal markdown
-            echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
-            echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>  " >> docs/journal/journal.md
-            echo "> $NOTES  " >> docs/journal/journal.md
-            echo "> " >> docs/journal/journal.md
-            echo "> <details open>" >> docs/journal/journal.md
-            echo "> <summary>📂 Details</summary>" >> docs/journal/journal.md
-            echo "> " >> docs/journal/journal.md
-            echo "> * **Pair**: <code>$PAIR</code>" >> docs/journal/journal.md
-            echo "> * **Bias**: $BIAS_DISPLAY" >> docs/journal/journal.md
-            echo "> * **Liquidity**: $LIQUIDITY" >> docs/journal/journal.md
-            echo "> * **POI**: $POI" >> docs/journal/journal.md
-            echo "> * **Outcome**: <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>" >> docs/journal/journal.md
-            echo "> * **P/L**: <span class=\"$PL_CLASS\">$FORMATTED_PL</span>" >> docs/journal/journal.md
-            echo "> " >> docs/journal/journal.md
-            echo "> </details>" >> docs/journal/journal.md
-            echo "> " >> docs/journal/journal.md
-            echo "> <details>" >> docs/journal/journal.md
-            echo "> <summary>📎 Attachment</summary>" >> docs/journal/journal.md
-            echo "> <img src=\"/images/ftmo-challenge-passed.png\" alt=\"FTMO Challenge Passed\" style=\"max-width: 300px; margin-top: 0.5rem;\" />" >> docs/journal/journal.md
-            echo "> </details>" >> docs/journal/journal.md
-            echo "" >> docs/journal/journal.md
+          echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
+          echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>  " >> docs/journal/journal.md
+          echo "> $NOTES  " >> docs/journal/journal.md
+          echo "> " >> docs/journal/journal.md
+          echo "> <details open>" >> docs/journal/journal.md
+          echo "> <summary>📂 Details</summary>" >> docs/journal/journal.md
+          echo "> " >> docs/journal/journal.md
+          echo "> * **Pair**: <code>$PAIR</code>" >> docs/journal/journal.md
+          echo "> * **Bias**: $BIAS_DISPLAY" >> docs/journal/journal.md
+          echo "> * **Liquidity**: $LIQUIDITY" >> docs/journal/journal.md
+          echo "> * **POI**: $POI" >> docs/journal/journal.md
+          echo "> * **Outcome**: <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>" >> docs/journal/journal.md
+          echo "> * **P/L**: <span class=\"$PL_CLASS\">$FORMATTED_PL</span>" >> docs/journal/journal.md
+          echo "> " >> docs/journal/journal.md
+          echo "> </details>" >> docs/journal/journal.md
+          echo "> " >> docs/journal/journal.md
+          echo "> <details>" >> docs/journal/journal.md
+          echo "> <summary>📎 Attachment</summary>" >> docs/journal/journal.md
+          echo "> <img src=\"/images/ftmo-challenge-passed.png\" alt=\"FTMO Challenge Passed\" style=\"max-width: 300px; margin-top: 0.5rem;\" />" >> docs/journal/journal.md
+          echo "> </details>" >> docs/journal/journal.md
+          echo "" >> docs/journal/journal.md
 
-        - name: Set git config
-          run: |
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions@users.noreply.github.com"
+      - name: Set git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions@users.noreply.github.com"
 
-        - name: Commit journal update
-          run: |
-            git add docs/journal/journal.md
-            git commit -m "Add new journal entry"
+      - name: Commit journal update
+        run: |
+          git add docs/journal/journal.md
+          git commit -m "Add new journal entry"
 
-        - name: Commit pull update
-          run: |
-            git config pull.rebase true
-            git pull
+      - name: Commit pull update
+        run: |
+          git config pull.rebase true
+          git pull
 
-        - name: Push changes
-          uses: ad-m/github-push-action@master
-          with:
-            github_token: ${{ secrets.GH_PAT }}
-            repository: 201508876PMH/hkh-trading
-            force: false
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          repository: 201508876PMH/hkh-trading
+          force: false
