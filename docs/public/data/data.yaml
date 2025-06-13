@@ -13,24 +13,3 @@
   pl: "-1854"
   notes: "Bearish orderflow + liq. sweep"
 
-
-- pair: BTC/USDT
-  datetime: "2012-23-12 23:30"
-  bias: Bullish
-  outcome: "Win"
-  pl: "+1002"
-  notes: "Heja ad a"
-
-- pair: BTC/USDT
-  datetime: "2012-23-12 23:23"
-  bias: Bullish
-  outcome: "Win"
-  pl: "+0012"
-  notes: "adadadad"
-
-- pair: BTC/USDT
-  datetime: "12-12-12 23:23"
-  bias: Bearish
-  outcome: "Loss"
-  pl: "-540"
-  notes: "aadadda"
