@@ -129,6 +129,7 @@ function createAgGrid() {
     },
     theme,
     autoSizeStrategy: { type: 'fitCellContents' },  // <-- here as object    pagination: true,
+    pagination: true,
     columnHoverHighlight: true,
     domLayout: 'normal',
   })
