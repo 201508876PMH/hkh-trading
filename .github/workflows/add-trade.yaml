@@ -168,7 +168,7 @@ jobs:
           fi
 
           echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
-          echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>  " >> docs/journal/journal.md
+          echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>  " >> docs/journal/journal.md
           echo "> $NOTES  " >> docs/journal/journal.md
           echo "> " >> docs/journal/journal.md
           echo "> <details open>" >> docs/journal/journal.md
