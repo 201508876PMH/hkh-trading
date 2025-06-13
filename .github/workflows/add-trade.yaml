@@ -48,7 +48,7 @@ on:
         type: boolean
 
 jobs:
-  add_trade:
+  summary:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -108,8 +108,8 @@ jobs:
           repository: 201508876PMH/hkh-trading
           force: false
 
-  create_journal_block:
-      needs: add_trade
+  trade-block:
+      needs: summary
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
@@ -195,7 +195,7 @@ jobs:
 
         - name: Append journal entry to file
           run: |
-            echo -e "${{ steps.generate_markdown.outputs.md_block }}" | sed 's/%0A/\n/g; s/%0D//g; s/%25/%/g' >> docs/journal.md
+            echo -e "${{ steps.generate_markdown.outputs.md_block }}" | sed 's/%0A/\n/g; s/%0D//g; s/%25/%/g' >> docs/journal/journal.md
 
         - name: Set git config
           run: |
