@@ -35,7 +35,7 @@ on:
           - Loss ❌ 
           - Break-even 🚥
       pl:
-        description: 'P/L (e.g., +100, -50, 0)''
+        description: 'P/L (e.g., +100, -50, 0)'
         required: true
         type: string
       notes:
