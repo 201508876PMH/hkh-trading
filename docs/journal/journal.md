@@ -64,3 +64,23 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
 > </details>
 
+
+## 12-12-12 23:23 <span class="loss">loss -€540</span>
+> [!NOTE] <span class="loss">loss</span>  
+> aadadda  
+> 
+> <details open>
+> <summary>📂 Details</summary>
+> 
+> * **Pair**: <code>BTC/USDT</code>
+> * **Bias**: 📉 Bearish
+> * **Outcome**: <span class="loss">loss</span>
+> * **P/L**: <span class="pl-circle pl-negative">-€540</span>
+> 
+> </details>
+> 
+> <details>
+> <summary>📎 Attachment</summary>
+> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> </details>
+
