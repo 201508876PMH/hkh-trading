@@ -43,7 +43,7 @@ on:
         required: false
         type: string
       confirm:
-        description: 'Please confirm all data is correct (checkbox)'
+        description: 'Please confirm all data is correct'
         required: true
         type: boolean
 
@@ -56,10 +56,10 @@ jobs:
 
       - name: Verify confirmation
         run: |
-          if [[ "${{ github.event.inputs.confirm }}" == "true" ]]; then
-            exit 1
-          fi
+          if [[ "${{ github.event.inputs.confirm }}" != "true" ]]; then
             echo "You must confirm all data is correct by checking the confirm box."
+          exit 1
+            fi
 
       - name: Prepare new entry YAML
         id: prep_yaml
