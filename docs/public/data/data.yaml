@@ -69,3 +69,12 @@
   outcome: "Loss"
   pl: "+100"
   notes: "adadad"
+
+- pair: BTC/USDT
+  datetime: "2023-21-21 23:20"
+  bias: Bearish
+  liquidity: "1"
+  poi: "1"
+  outcome: "Loss"
+  pl: "+9"
+  notes: "adadadad"
