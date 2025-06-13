@@ -14,7 +14,7 @@ import {
   themeAlpine,
   iconSetMaterial,
   colorSchemeLightCold,
-  colorSchemeDarkBlue,
+  colorSchemeDark,
 } from 'ag-grid-community'
 
 ModuleRegistry.registerModules([AllCommunityModule])
@@ -107,7 +107,7 @@ function createAgGrid() {
   if (!gridRef.value) return
 
   const theme = themeAlpine
-    .withPart(isDark.value ? colorSchemeDarkBlue : colorSchemeLightCold)
+    .withPart(isDark.value ? colorSchemeDark : colorSchemeLightCold)
     .withPart(iconSetMaterial)
     .withParams({ iconSize: 18 })
 
