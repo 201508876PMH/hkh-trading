@@ -210,6 +210,10 @@ jobs:
             git add docs/journal/journal.md
             git commit -m "Add new journal entry"
 
+        - name: Commit pull update
+          run: |
+            git pull
+
         - name: Push changes
           uses: ad-m/github-push-action@master
           with:
