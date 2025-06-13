@@ -8,6 +8,10 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@ag-grid-community/core": "^32.3.5",
+    "@ag-grid-community/styles": "^32.3.5",
+    "ag-grid-community": "^33.3.2",
+    "ag-grid-vue3": "^33.3.2",
     "chart.js": "^4.4.9",
     "chartjs-adapter-date-fns": "^3.0.0",
     "papaparse": "^5.5.3",

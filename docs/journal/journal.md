@@ -15,3 +15,8 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > * **losses**: 1  
 >   * <span class="loss">Loss</span> on GBPJPY: -€80  
 > * **profit**: €150.50
+
+
+## Test
+<TradeJournalAG />
+

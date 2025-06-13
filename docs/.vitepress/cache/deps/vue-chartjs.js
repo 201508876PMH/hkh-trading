@@ -8,7 +8,7 @@ import {
   PolarAreaController,
   RadarController,
   ScatterController
-} from "./chunk-6HHV44YR.js";
+} from "./chunk-2YALDXB4.js";
 import {
   defineComponent,
   h,
@@ -22,7 +22,7 @@ import {
   version,
   watch
 } from "./chunk-FA4MWVOB.js";
-import "./chunk-EQCVQC35.js";
+import "./chunk-JVWSFFO4.js";
 
 // node_modules/vue-chartjs/dist/index.js
 var CommonProps = {

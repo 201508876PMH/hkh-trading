@@ -10,6 +10,9 @@ import LineChart from './components/LineChart.vue'
 import PieChart from './components/PieChart.vue'
 import ProgressiveLineChart from './components/ProgressiveLineChart.vue'
 import SummaryTable from './components/SummaryTable.vue'
+import TradeJournal from './components/TradeJournal.vue'
+import TradeJournalAG from './components/TradeJournalAG.vue'
+
 
 export default {
   ...DefaultTheme,
@@ -20,5 +23,7 @@ export default {
     app.component('PieChart', PieChart)
     app.component('ProgressiveLineChart', ProgressiveLineChart)
     app.component('SummaryTable', SummaryTable)
+    app.component('TradeJournal', TradeJournal)
+    app.component('TradeJournalAG', TradeJournalAG)
   }
 }
