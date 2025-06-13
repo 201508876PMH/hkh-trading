@@ -149,14 +149,12 @@ jobs:
 
           if [ "$OUTCOME" = "Win" ]; then
             OUTCOME_CLASS="win"
-            OUTCOME_LABEL="Win"
+            OUTCOME_LABEL="NOTE"
             PL_CLASS="pl-circle"
-            BLOCK_TYPE="NOTE"
           else
             OUTCOME_CLASS="loss"
-            OUTCOME_LABEL="Loss"
+            OUTCOME_LABEL="DANGER"
             PL_CLASS="pl-circle pl-negative"
-            BLOCK_TYPE="DANGER"
           fi
 
           if [[ "$PL" == -* ]]; then
