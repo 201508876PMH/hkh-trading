@@ -27,3 +27,10 @@
   outcome: "Win"
   pl: "+0012"
   notes: "adadadad"
+
+- pair: BTC/USDT
+  datetime: "12-12-12 23:23"
+  bias: Bearish
+  outcome: "Loss"
+  pl: "-540"
+  notes: "aadadda"
