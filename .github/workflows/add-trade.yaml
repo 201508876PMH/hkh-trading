@@ -155,7 +155,7 @@ jobs:
             NOTES="_No additional notes provided._"
           fi
 
-          echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
+          echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS $FORMATTED_PL</span>" >> docs/journal/journal.md
           echo "> [!NOTE] <span class=\"$OUTCOME_CLASS\">$OUTCOME_CLASS</span>  " >> docs/journal/journal.md
           echo "> $NOTES  " >> docs/journal/journal.md
           echo "> " >> docs/journal/journal.md
