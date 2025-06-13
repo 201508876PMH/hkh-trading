@@ -37,7 +37,6 @@ const columnDefs = [
     headerName: 'Pair',
     field: 'pair',
     filter: true,
-    flex: 1,
     minWidth: 140,
     cellRenderer: (params) => {
       const pair = params.value || "";
@@ -50,12 +49,11 @@ const columnDefs = [
         </div>`;
     },
   },
-  { headerName: 'Date & Time', field: 'datetime', filter: 'agDateColumnFilter', flex: 1, minWidth: 160 },
+  { headerName: 'Date & Time', field: 'datetime', filter: 'agDateColumnFilter', minWidth: 160 },
   {
     headerName: 'Bias',
     field: 'bias',
     filter: true,
-    flex: 1,
     minWidth: 110,
     cellRenderer: (params) => {
       const val = params.value
@@ -75,7 +73,6 @@ const columnDefs = [
   {
     headerName: 'Outcome',
     field: 'outcome',
-    flex: 1,
     minWidth: 100,
     cellRenderer: (params) => {
       if (params.value === 'Win') {
@@ -90,7 +87,6 @@ const columnDefs = [
   {
     headerName: 'P/L',
     field: 'pl',
-    flex: 1,
     minWidth: 100,
     cellRenderer: (params) => {
       const value = parseFloat(params.value);
@@ -102,7 +98,6 @@ const columnDefs = [
   {
     headerName: 'Notes',
     field: 'notes',
-    flex: 2,
     minWidth: 240,
   },
 ]
@@ -125,7 +120,7 @@ function createAgGrid() {
     rowData: rowData.value,
     defaultColDef: {
       sortable: true,
-      resizable: true,
+      resizable: false,
     },
     theme,
     autoSizeStrategy: { type: 'fitCellContents' },  // <-- here as object    pagination: true,
