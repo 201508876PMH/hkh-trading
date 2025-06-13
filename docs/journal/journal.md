@@ -21,7 +21,7 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > 
 > <details>
 > <summary>📎 Attachment</summary>
-> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> <img src="/images/13062025 GBPJPY1.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
 > </details>
 
 ## 2025-06-11 21:28) <span class="loss">DANGER -€1854</span>
