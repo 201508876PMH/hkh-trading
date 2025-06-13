@@ -31,9 +31,9 @@ on:
         required: true
         type: choice
         options:
-          - Win
-          - Loss
-          - Break-even
+          - Win ✅
+          - Loss ❌ 
+          - Break-even 🚥
       pl:
         description: 'P/L'
         required: true
@@ -55,10 +55,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Verify confirmation
-        if: ${{ inputs.confirm != 'true' }}
         run: |
-          echo "You must confirm all data is correct by checking the confirm box."
-          exit 1
+          if [[ "${{ github.event.inputs.confirm }}" == "true" ]]; then
+            exit 1
+          fi
+            echo "You must confirm all data is correct by checking the confirm box."
 
       - name: Prepare new entry YAML
         id: prep_yaml
