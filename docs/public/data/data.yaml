@@ -16,3 +16,12 @@
   outcome: "Loss"
   pl: "-50"
   notes: "adawdad. adw da a "
+
+- pair: ETH/USDT
+  datetime: "2024-12-23 23:20"
+  bias: Bullish
+  liquidity: "1"
+  poi: "1"
+  outcome: "Win"
+  pl: "+100202020202"
+  notes: "adawwdada"
