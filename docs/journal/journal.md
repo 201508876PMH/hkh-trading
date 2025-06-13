@@ -24,3 +24,24 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
 > </details>
 
+## 2025-06-11 21:28) <span class="loss">DANGER -€1854</span>
+> [!DANGER] <span class="loss">loss</span>  
+> Bearish orderflow + liq. sweep  
+> 
+> <details open>
+> <summary>📂 Details</summary>
+> 
+> * **Pair**: <code>ETH/USDT</code>
+> * **Bias**: 📉 Bearish
+> * **Liquidity**: L
+> * **POI**: L
+> * **Outcome**: <span class="loss">DANGER</span>
+> * **P/L**: <span class="pl-circle pl-negative">-€1854</span>
+> 
+> </details>
+> 
+> <details>
+> <summary>📎 Attachment</summary>
+> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> </details>
+
