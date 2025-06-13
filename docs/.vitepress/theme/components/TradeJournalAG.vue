@@ -1,10 +1,11 @@
 <template>
-  <div ref="gridRef" class="ag-theme-alpine" style="height: 500px; width: 100%"></div>
+  <div ref="gridRef" class="ag-theme-alpine" style="height: 1000px; width: 100%"></div>
 </template>
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useData } from 'vitepress'
+import yaml from 'js-yaml'
 
 import { createGrid, ModuleRegistry } from 'ag-grid-community'
 import { AllCommunityModule } from 'ag-grid-community'
@@ -21,9 +22,16 @@ ModuleRegistry.registerModules([AllCommunityModule])
 const { isDark } = useData()
 const gridRef = ref(null)
 let gridInstance = null
+const rowData = ref([])
+
+const defaultIcon = "/hkh-trading/svg/unknown-coin.svg";  // Your default icon URL
+const iconMap = {
+  BTC: "/hkh-trading/svg/bitcoin.svg",
+  ETH: "/hkh-trading/svg/eth.svg",
+  // add more mappings here
+};
 
 const columnDefs = [
-  // your columns here (same as before)
   {
     headerName: 'Pair',
     field: 'pair',
@@ -31,11 +39,14 @@ const columnDefs = [
     flex: 1,
     minWidth: 140,
     cellRenderer: (params) => {
+      const pair = params.value || "";
+      const base = pair.split('/')[0];
+      const icon = iconMap[base] || defaultIcon;
       return `
         <div style="display: flex; align-items: center; gap: 8px;">
-          <img src="${params.data.icon}" alt="${params.value}" style="width: 20px; height: 20px;" />
-          ${params.value}
-        </div>`
+          <img src="${icon}" alt="${base}" style="width: 20px; height: 20px;" />
+          ${pair}
+        </div>`;
     },
   },
   { headerName: 'Date & Time', field: 'datetime', filter: 'agDateColumnFilter', flex: 1, minWidth: 160 },
@@ -47,20 +58,19 @@ const columnDefs = [
     minWidth: 110,
     cellRenderer: (params) => {
       const val = params.value
-      const iconPath =
-        val === 'Bullish'
-          ? '/hkh-trading/svg/bullish.svg'
-          : '/hkh-trading/svg/bearish.svg'
+      const iconPath = val === 'Bullish'
+        ? '/hkh-trading/svg/bullish.svg'
+        : '/hkh-trading/svg/bearish.svg'
 
-      return `
-        <div style="display: flex; align-items: center; gap: 6px;">
+       return `
+        <div style="display: flex; align-items: center; gap: 6px; justify-content: center;">
           <img src="${iconPath}" alt="${val}" style="width: 14px; height: 14px;" />
           <span>${val}</span>
-        </div>`
+        </div>`;
     },
   },
-  { headerName: 'Liquidity', field: 'liquidity', flex: 1, minWidth: 140 },
-  { headerName: 'POI', field: 'poi', flex: 1, minWidth: 120 },
+  { headerName: 'Liquidity', field: 'liquidity', flex: 1, minWidth: 140, cellStyle: { textAlign: 'center' } },
+  { headerName: 'POI', field: 'poi', flex: 1, minWidth: 120, cellStyle: { textAlign: 'center' } },
   {
     headerName: 'Outcome',
     field: 'outcome',
@@ -68,17 +78,9 @@ const columnDefs = [
     minWidth: 100,
     cellStyle: (params) => {
       if (params.value === 'Win') {
-        return {
-          color: '#3B664A',
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }
+        return { color: '#3B664A', textAlign: 'center', fontWeight: 'bold' }
       } else if (params.value === 'Loss') {
-        return {
-          color: '#B22222',
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }
+        return { color: '#B22222', textAlign: 'center', fontWeight: 'bold' }
       }
     },
   },
@@ -88,58 +90,21 @@ const columnDefs = [
     flex: 1,
     minWidth: 100,
     cellRenderer: (params) => {
-      const value = parseFloat(params.value)
-      const className = value < 0 ? 'pl-circle pl-negative' : 'pl-circle'
-      return `<div class="${className}">${params.value}</div>`
+      const value = parseFloat(params.value);
+      const className = value < 0 ? 'pl-circle pl-negative' : 'pl-circle';
+      return `<div class="${className}" style="text-align: center;">${params.value}</div>`;
     },
+    cellStyle: { textAlign: 'center' }, // <-- Center content horizontally
   },
   {
-    headerName: 'Chart+Notes',
+    headerName: 'Notes',
     field: 'notes',
-    flex: 2, // wider column
+    flex: 2,
     minWidth: 240,
-    cellRenderer: (params) => {
-      const { chart, note } = params.value || {}
-      return `
-        <div style="display:flex; gap:10px; align-items:center;">
-          <img src="${chart}" style="width:80px; border-radius:6px;" />
-          <div style="font-size:12px;">${note}</div>
-        </div>`
-    },
   },
 ]
 
-const rowData = [
-  {
-    pair: 'BTC/USDT',
-    icon: '/hkh-trading/svg/bitcoin.svg',
-    datetime: '2025-06-12 14:30',
-    bias: 'Bullish',
-    liquidity: 'Buy-side taken',
-    poi: '1H OB @ 65k',
-    outcome: 'Win',
-    pl: '+250',
-    notes: {
-      chart: '/hkh-trading/images/ftmo-challenge-passed.png',
-      note: 'Quick bounce off OB, TP1 hit.',
-    },
-  },
-  {
-    pair: 'ETH/USDT',
-    icon: '/hkh-trading/svg/eth.svg',
-    datetime: '2025-06-11 09:10',
-    bias: 'Bearish',
-    liquidity: 'Sell-side taken',
-    poi: '4H FVG',
-    outcome: 'Loss',
-    pl: '-100',
-    notes: {
-      chart: '/hkh-trading/images/ftmo-challenge-passed.png',
-      note: 'Missed entry timing, stop loss hit.',
-    },
-  },
-]
-
+// Create grid with autosizing on gridReady
 function createAgGrid() {
   if (!gridRef.value) return
 
@@ -154,25 +119,39 @@ function createAgGrid() {
 
   gridInstance = createGrid(gridRef.value, {
     columnDefs,
-    rowData,
+    rowData: rowData.value,
     defaultColDef: {
       sortable: true,
       resizable: true,
     },
     theme,
-    pagination: true,
+    autoSizeStrategy: { type: 'fitCellContents' },  // <-- here as object    pagination: true,
     columnHoverHighlight: true,
     domLayout: 'normal',
   })
 }
 
+// Load YAML data, then create grid
+async function loadData() {
+  try {
+    const res = await fetch('/hkh-trading/data/data.yaml')
+    const text = await res.text()
+    const data = yaml.load(text)
+    rowData.value = data
+    createAgGrid()
+  } catch (e) {
+    console.error('Error loading YAML data:', e)
+  }
+}
+
 onMounted(() => {
-  createAgGrid()
+  loadData()
 })
 
-// Watch dark mode changes and recreate grid with new theme
+// Recreate grid on dark mode changes (only if data loaded)
 watch(isDark, () => {
-  createAgGrid()
+  if (rowData.value.length) {
+    createAgGrid()
+  }
 })
 </script>
-

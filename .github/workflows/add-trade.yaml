@@ -1,0 +1,87 @@
+name: 🚀 Add Trade Entry 
+
+on:
+  workflow_dispatch:
+    inputs:
+      pair:
+        description: 'Trading pair (e.g. FDS/BTC)'
+        required: true
+        type: string
+      datetime:
+        description: 'Date & Time (YYYY-MM-DD HH:mm)'
+        required: true
+        type: string
+      bias:
+        description: 'Bias'
+        required: true
+        type: choice
+        options:
+          - Bullish 📈
+          - Bearish 📉
+      liquidity:
+        description: 'Liquidity description'
+        required: true
+        type: string
+      poi:
+        description: 'Point of Interest'
+        required: true
+        type: string
+      outcome:
+        description: 'Outcome'
+        required: true
+        type: choice
+        options:
+          - Win
+          - Loss
+          - Break-even
+      pl:
+        description: 'Profit / Loss'
+        required: true
+        type: string
+      notes:
+        description: 'Notes'
+        required: true
+        type: string
+      confirmation:
+        description: 'Confirm data is correct (yes/no)'
+        required: true
+        type: choice
+        options:
+          - yes
+          - no
+
+jobs:
+  add_entry:
+    if: ${{ github.event.inputs.confirmation == 'yes' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Append new trade entry to data.yaml
+        run: |
+          echo "- pair: ${{ github.event.inputs.pair }}" >> data.yaml
+          echo "  datetime: \"${{ github.event.inputs.datetime }}\"" >> data.yaml
+          echo "  bias: ${{ github.event.inputs.bias }}" >> data.yaml
+          echo "  liquidity: \"${{ github.event.inputs.liquidity }}\"" >> data.yaml
+          echo "  poi: \"${{ github.event.inputs.poi }}\"" >> data.yaml
+          echo "  outcome: ${{ github.event.inputs.outcome }}" >> data.yaml
+          echo "  pl: \"${{ github.event.inputs.pl }}\"" >> data.yaml
+          echo "  notes: \"${{ github.event.inputs.notes }}\"" >> data.yaml
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.yaml
+          git commit -m "Add trade entry ${{ github.event.inputs.pair }} @ ${{ github.event.inputs.datetime }}"
+          git push
+
+  reject_entry:
+    if: ${{ github.event.inputs.confirmation != 'yes' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject workflow run
+        run: |
+          echo "Data not confirmed. Please run the workflow with confirmation=yes."
+          exit 1

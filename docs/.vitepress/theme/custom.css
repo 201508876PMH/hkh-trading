@@ -60,15 +60,6 @@
   margin: 0.2em 0;
 }
 
-/* Optional styling for .win and .loss badges */
-.win {
-  color: #2e7d32;
-  font-weight: bold;
-}
-.loss {
-  color: #c62828;
-  font-weight: bold;
-}
 
 /*******/
 .pl-circle {
@@ -85,4 +76,8 @@
 .pl-circle.pl-negative {
   color: #FFF;             /* soft red text */
   background-color: #B22222;  /* deep red background */
+}
+
+.ag-header-cell-label {
+  justify-content: center !important;
 }
