@@ -124,10 +124,8 @@ jobs:
               exit 1
             fi
 
-        - name: Generate journal markdown block
-          id: generate_markdown
+        - name: Generate and append journal entry
           run: |
-            # Clean input
             BIAS="${{ github.event.inputs.bias }}"
             BIAS="${BIAS//📈/}"
             BIAS="${BIAS//📉/}"
@@ -146,7 +144,7 @@ jobs:
             LIQUIDITY="${{ github.event.inputs.liquidity }}"
             POI="${{ github.event.inputs.poi }}"
 
-            # Display bias with emoji
+            # Bias display
             if [ "$BIAS" = "Bullish" ]; then
               BIAS_DISPLAY="📈 Bullish"
             elif [ "$BIAS" = "Bearish" ]; then
@@ -170,47 +168,40 @@ jobs:
               PL_CLASS="pl-circle"
             fi
 
-            # Format P/L with currency and sign
+            # Format P/L value
             if [[ "$PL" == -* ]]; then
               FORMATTED_PL="-€${PL#-}"
             else
               FORMATTED_PL="+€${PL#+}"
             fi
 
-            # Use default note if empty
+            # Notes fallback
             if [ -z "$NOTES" ]; then
               NOTES="_No additional notes provided._"
             fi
 
-            echo "md_block<<EOF" >> $GITHUB_OUTPUT
-            cat <<EOF >> $GITHUB_OUTPUT
-            ## $DATETIME <span class="$OUTCOME_CLASS">$OUTCOME_LABEL $FORMATTED_PL</span>
-            > [!${OUTCOME_LABEL^^}] <span class="$OUTCOME_CLASS">$OUTCOME_LABEL</span>  
-            > $NOTES  
-            > 
-            > <details open>
-            > <summary>📂 Details</summary>
-            > 
-            > * **Pair**: <code>$PAIR</code>
-            > * **Bias**: $BIAS_DISPLAY
-            > * **Liquidity**: $LIQUIDITY
-            > * **POI**: $POI
-            > * **Outcome**: <span class="$OUTCOME_CLASS">$OUTCOME_LABEL</span>
-            > * **P/L**: <span class="$PL_CLASS">$FORMATTED_PL</span>
-            > 
-            > </details>
-            > 
-            > <details>
-            > <summary>📎 Attachment</summary>
-            > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
-            > </details>
-
-            EOF
-            echo "EOF" >> $GITHUB_OUTPUT
-
-        - name: Append journal entry to file
-          run: |
-            echo "${{ steps.generate_markdown.outputs.md_block }}" >> docs/journal/journal.md
+            # Append to journal markdown
+            echo "## $DATETIME <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL $FORMATTED_PL</span>" >> docs/journal/journal.md
+            echo "> [!${OUTCOME_LABEL^^}] <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>  " >> docs/journal/journal.md
+            echo "> $NOTES  " >> docs/journal/journal.md
+            echo "> " >> docs/journal/journal.md
+            echo "> <details open>" >> docs/journal/journal.md
+            echo "> <summary>📂 Details</summary>" >> docs/journal/journal.md
+            echo "> " >> docs/journal/journal.md
+            echo "> * **Pair**: <code>$PAIR</code>" >> docs/journal/journal.md
+            echo "> * **Bias**: $BIAS_DISPLAY" >> docs/journal/journal.md
+            echo "> * **Liquidity**: $LIQUIDITY" >> docs/journal/journal.md
+            echo "> * **POI**: $POI" >> docs/journal/journal.md
+            echo "> * **Outcome**: <span class=\"$OUTCOME_CLASS\">$OUTCOME_LABEL</span>" >> docs/journal/journal.md
+            echo "> * **P/L**: <span class=\"$PL_CLASS\">$FORMATTED_PL</span>" >> docs/journal/journal.md
+            echo "> " >> docs/journal/journal.md
+            echo "> </details>" >> docs/journal/journal.md
+            echo "> " >> docs/journal/journal.md
+            echo "> <details>" >> docs/journal/journal.md
+            echo "> <summary>📎 Attachment</summary>" >> docs/journal/journal.md
+            echo "> <img src=\"/images/ftmo-challenge-passed.png\" alt=\"FTMO Challenge Passed\" style=\"max-width: 300px; margin-top: 0.5rem;\" />" >> docs/journal/journal.md
+            echo "> </details>" >> docs/journal/journal.md
+            echo "" >> docs/journal/journal.md
 
         - name: Set git config
           run: |
