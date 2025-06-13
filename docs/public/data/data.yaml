@@ -6,3 +6,12 @@
   outcome: "Win"
   pl: "+100"
   notes: "aweaewwad"
+
+- pair: ETH/USDT
+  datetime: "2025-01-02 19:20"
+  bias: Bearish
+  liquidity: "1"
+  poi: "1"
+  outcome: "Loss"
+  pl: "-50"
+  notes: "lort"
