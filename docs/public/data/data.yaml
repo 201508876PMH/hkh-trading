@@ -12,3 +12,9 @@
   outcome: "Loss"
   pl: "-1854"
   notes: "Bearish orderflow + liq. sweep"
+- pair: BTC/USDT
+  datetime: "2901-21-21 23:20"
+  bias: Bullish
+  outcome: "Win"
+  pl: "+10323"
+  notes: "adada Hej a akjn akjdnlan da. aldiun d nUnh D D wd D"
