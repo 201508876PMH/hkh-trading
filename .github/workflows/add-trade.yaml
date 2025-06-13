@@ -86,10 +86,16 @@ jobs:
           echo "" >> data.yaml  # ensure newline at EOF before appending
           cat new_entry.yaml >> data.yaml
 
-      - name: Commit and push changes
+      - name: Set up Git config
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git add data.yaml
-          git commit -m "Add new trade entry from workflow_dispatch"
-          git push
+          git commit -m "Add new trade entry"
+          git push origin HEAD
