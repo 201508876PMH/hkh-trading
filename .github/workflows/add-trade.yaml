@@ -35,7 +35,7 @@ on:
           - Loss ❌ 
           - Break-even 🚥
       pl:
-        description: 'P/L'
+        description: 'P/L (e.g., +100, -50, 0)''
         required: true
         type: string
       notes:
@@ -51,8 +51,10 @@ jobs:
   add_trade:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@master
+        with:
+          repository: 201508876PMH/hkh-trading
+          token: ${{ secrets.GH_PAT }}
 
       - name: Verify confirmation
         run: |
