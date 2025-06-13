@@ -12,7 +12,7 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > 
 > * **Pair**: <code>GBP/JPY</code>
 > * **Bias**: 📈 Bullish
-> * **Outcome**: <span class="win">NOTE</span>
+> * **Outcome**: <span class="win">win</span>
 > * **P/L**: <span class="pl-circle">+€2458</span>
 > 
 > </details>
@@ -31,7 +31,7 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > 
 > * **Pair**: <code>ETH/USDT</code>
 > * **Bias**: 📉 Bearish
-> * **Outcome**: <span class="loss">DANGER</span>
+> * **Outcome**: <span class="loss">loss</span>
 > * **P/L**: <span class="pl-circle pl-negative">-€1854</span>
 > 
 > </details>
