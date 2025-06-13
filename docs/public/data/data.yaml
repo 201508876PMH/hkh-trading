@@ -42,3 +42,12 @@
   outcome: "Win"
   pl: "-101010"
   notes: "dadad"
+
+- pair: BTC/USDT
+  datetime: "3031-12-12 23:23"
+  bias: Bearish
+  liquidity: "232"
+  poi: "2332"
+  outcome: "Loss"
+  pl: "-50"
+  notes: "adadad"
