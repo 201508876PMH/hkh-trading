@@ -7,22 +7,8 @@
   notes: "Limit på fib50, stop under fib50 (movede stop til PA candle)"
 
 - pair: ETH/USDT
-  datetime: "2025-06-11 21:28)"
+  datetime: "2025-06-11 21:28"
   bias: Bearish
   outcome: "Loss"
   pl: "-1854"
   notes: "Bearish orderflow + liq. sweep"
-
-- pair: BTC/USDT
-  datetime: "2032-12-12 23:23"
-  bias: Bullish
-  outcome: "Win"
-  pl: "+101033"
-  notes: "aedadadad"
-
-- pair: ETH/USDT
-  datetime: "2024-12-12 02:02"
-  bias: Bearish
-  outcome: "Loss"
-  pl: "-2404"
-  notes: "adadawd"

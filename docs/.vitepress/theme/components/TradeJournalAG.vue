@@ -28,6 +28,7 @@ const defaultIcon = "/hkh-trading/svg/unknown-coin.svg";  // Your default icon U
 const iconMap = {
   BTC: "/hkh-trading/svg/bitcoin.svg",
   ETH: "/hkh-trading/svg/eth.svg",
+  GBP: "/hkh-trading/svg/gpg.svg",
   // add more mappings here
 };
 
