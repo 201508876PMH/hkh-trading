@@ -108,10 +108,10 @@ jobs:
           repository: 201508876PMH/hkh-trading
           force: false
 
-    trade-block:
-      needs: summary
-      runs-on: ubuntu-latest
-      steps:
+  trade-block:
+    needs: summary
+    runs-on: ubuntu-latest
+    steps:
         - uses: actions/checkout@master
           with:
             repository: 201508876PMH/hkh-trading
