@@ -107,3 +107,106 @@ jobs:
           github_token: ${{ secrets.GH_PAT }}
           repository: 201508876PMH/hkh-trading
           force: false
+
+  create_journal_block:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: Verify confirmation
+          run: |
+            if [[ "${{ github.event.inputs.confirm }}" != "true" ]]; then
+              echo "You must confirm all data is correct by checking the confirm box."
+              exit 1
+            fi
+
+        - name: Generate journal markdown block
+          id: generate_markdown
+          run: |
+            # Strip emojis for logic
+            BIAS="${{ github.event.inputs.bias }}"
+            BIAS="${BIAS//📈/}"
+            BIAS="${BIAS//📉/}"
+            BIAS="$(echo "$BIAS" | xargs)"
+
+            OUTCOME="${{ github.event.inputs.outcome }}"
+            OUTCOME="${OUTCOME//✅/}"
+            OUTCOME="${OUTCOME//❌/}"
+            OUTCOME="${OUTCOME//🚥/}"
+            OUTCOME="$(echo "$OUTCOME" | xargs)"
+
+            PL="${{ github.event.inputs.pl }}"
+            NOTES="${{ github.event.inputs.notes }}"
+            PAIR="${{ github.event.inputs.pair }}"
+            DATETIME="${{ github.event.inputs.datetime }}"
+            LIQUIDITY="${{ github.event.inputs.liquidity }}"
+            POI="${{ github.event.inputs.poi }}"
+
+            # Bias emoji and label
+            if [ "$BIAS" = "Bullish" ]; then
+              BIAS_DISPLAY="📈 Bullish"
+            elif [ "$BIAS" = "Bearish" ]; then
+              BIAS_DISPLAY="📉 Bearish"
+            else
+              BIAS_DISPLAY="$BIAS"
+            fi
+
+            # Outcome class and label for styling
+            if [ "$OUTCOME" = "Win" ]; then
+              OUTCOME_CLASS="win"
+              OUTCOME_LABEL="Win"
+              PL_CLASS="pl-circle"
+            elif [ "$OUTCOME" = "Loss" ]; then
+              OUTCOME_CLASS="loss"
+              OUTCOME_LABEL="Loss"
+              PL_CLASS="pl-circle pl-negative"
+            else
+              OUTCOME_CLASS="note"
+              OUTCOME_LABEL="Break-even"
+              PL_CLASS="pl-circle"
+            fi
+
+            # Compose the markdown block
+            cat <<EOF > journal-entry.md
+            ## $DATETIME <span class="$OUTCOME_CLASS">$OUTCOME_LABEL $PL</span>
+            > [!${OUTCOME_CLASS^^}] <span class="$OUTCOME_CLASS">$OUTCOME_LABEL</span>  
+            > $NOTES  
+            > 
+            > <details open>
+            > <summary>📂 Details</summary>
+            > 
+            > * **Pair**: <code>$PAIR</code>
+            > * **Bias**: $BIAS_DISPLAY
+            > * **Liquidity**: $LIQUIDITY
+            > * **POI**: $POI
+            > * **Outcome**: <span class="$OUTCOME_CLASS">$OUTCOME_LABEL</span>
+            > * **P/L**: <span class="$PL_CLASS">$PL</span>
+            > 
+            > </details>
+            > 
+            > <details>
+            > <summary>📎 Attachment</summary>
+            > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+            > </details>
+            EOF
+
+            echo "::set-output name=md_block::$(cat journal-entry.md | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')"
+
+        - name: Append journal entry to file
+          run: |
+            echo -e "${{ steps.generate_markdown.outputs.md_block }}" | sed 's/%0A/\n/g; s/%0D//g; s/%25/%/g' >> docs/journal.md
+
+        - name: Set git config
+          run: |
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions@users.noreply.github.com"
+
+        - name: Commit journal update
+          run: |
+            git add docs/journal/journal.md
+            git commit -m "Add new journal entry for $DATETIME" || echo "No changes to commit"
+
+        - name: Push changes
+          uses: ad-m/github-push-action@v0.6.0
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}

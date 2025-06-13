@@ -50,7 +50,8 @@ export default defineConfig({
       {
         text: 'Journal',
         items: [
-          { text: 'Journal', link: '/journal/journal' }
+          { text: 'Journal', link: '/journal/journal' },
+          { text: 'Overview', link: '/journal/overview' }
         ]
       }
     ],

@@ -21,7 +21,20 @@
   .VPDoc.has-aside .content-container {
     max-width: clamp(100%, 70vw, 1002px) !important;
   }
-  .win {
+
+/* Light mode styles */
+.custom-block.note {
+  background-color: #d3f2e1; /* light green */
+  color: #1b4332;            /* deep green text */
+}
+
+/* Dark mode styles */
+.dark .custom-block.note {
+  background-color: #1b4332; /* darker green */
+  color: #d3f2e1;            /* light green text */
+}
+
+.win {
   background-color: #d4edda;
   color: #155724;
   padding: 0.1em 0.2em;
@@ -59,6 +72,7 @@
   color: #c62828;
   margin: 0.2em 0;
 }
+
 
 
 /*******/

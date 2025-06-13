@@ -76,13 +76,15 @@ const columnDefs = [
     field: 'outcome',
     flex: 1,
     minWidth: 100,
-    cellStyle: (params) => {
+    cellRenderer: (params) => {
       if (params.value === 'Win') {
-        return { color: '#3B664A', textAlign: 'center', fontWeight: 'bold' }
+        return `<span class="win">${params.value}</span>`;
       } else if (params.value === 'Loss') {
-        return { color: '#B22222', textAlign: 'center', fontWeight: 'bold' }
+        return `<span class="loss">${params.value}</span>`;
       }
+      return params.value;
     },
+    cellStyle: { textAlign: 'center' }
   },
   {
     headerName: 'P/L',
