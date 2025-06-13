@@ -212,6 +212,7 @@ jobs:
 
         - name: Commit pull update
           run: |
+            git config pull.rebase true
             git pull
 
         - name: Push changes
