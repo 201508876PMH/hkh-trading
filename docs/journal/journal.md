@@ -44,3 +44,23 @@ The goal of this journal is to facilitate continuous improvement through discipl
 > <summary>📎 Attachment</summary>
 > <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
 > </details>
+
+## 2012-23-12 23:23 <span class="win">win +€0012</span>
+> [!NOTE] <span class="win">win</span>  
+> adadadad  
+> 
+> <details open>
+> <summary>📂 Details</summary>
+> 
+> * **Pair**: <code>BTC/USDT</code>
+> * **Bias**: 📈 Bullish
+> * **Outcome**: <span class="win">win</span>
+> * **P/L**: <span class="pl-circle">+€0012</span>
+> 
+> </details>
+> 
+> <details>
+> <summary>📎 Attachment</summary>
+> <img src="/images/ftmo-challenge-passed.png" alt="FTMO Challenge Passed" style="max-width: 300px; margin-top: 0.5rem;" />
+> </details>
+
