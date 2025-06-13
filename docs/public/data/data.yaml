@@ -33,3 +33,12 @@
   outcome: "Win"
   pl: "+100"
   notes: "reer"
+
+- pair: BTC/USDT
+  datetime: "2034-12-21 23:24"
+  bias: Bullish
+  liquidity: "3"
+  poi: "3"
+  outcome: "Win"
+  pl: "-101010"
+  notes: "dadad"
