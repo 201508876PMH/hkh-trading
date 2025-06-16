@@ -34,9 +34,9 @@ on:
         required: false
         type: string
       confirm:
-        description: 'Please confirm all data is correct'
+        description: 'Please confirm all data is correct (type "true" to confirm)'
         required: true
-        type: boolean
+        type: string
 
 jobs:
   summary:
