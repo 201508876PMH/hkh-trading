@@ -1,4 +1,15 @@
 import {
+  BarController,
+  BubbleController,
+  Chart,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController
+} from "./chunk-2YALDXB4.js";
+import {
   defineComponent,
   h,
   isProxy,
@@ -11,17 +22,6 @@ import {
   version,
   watch
 } from "./chunk-FA4MWVOB.js";
-import {
-  BarController,
-  BubbleController,
-  Chart,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController
-} from "./chunk-2YALDXB4.js";
 import "./chunk-JVWSFFO4.js";
 
 // node_modules/vue-chartjs/dist/index.js

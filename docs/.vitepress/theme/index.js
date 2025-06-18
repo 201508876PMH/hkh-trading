@@ -1,5 +1,4 @@
 import DefaultTheme from 'vitepress/theme'
-import VueCalendarHeatmap from 'vue3-calendar-heatmap'
 
 import './custom.css'
 
@@ -23,8 +22,6 @@ import CalendarHeatmap from './components/CalendarHeatmap.vue'
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
-    app.use(VueCalendarHeatmap)
-
     DefaultTheme.enhanceApp?.({ app })  // keep default behavior
     app.component('BarChart', BarChart)
     app.component('LineChart', LineChart)
@@ -34,5 +31,6 @@ export default {
     app.component('TradeJournalAG', TradeJournalAG)
     app.component('JournalSummary', JournalSummary)
     app.component('CalendarHeatmap', CalendarHeatmap)
+
   }
 }
