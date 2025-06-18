@@ -120,10 +120,3 @@ const tooltipFormatter = (v) => {
     :tooltip-formatter="tooltipFormatter"
   />
 </template>
-
-<script>
-import { CalendarHeatmap } from 'vue3-calendar-heatmap'
-export default {
-  components: { CalendarHeatmap }
-}
-</script>

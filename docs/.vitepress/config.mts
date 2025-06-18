@@ -70,6 +70,7 @@ export default defineConfig({
       }
     ],
     },
+
     socialLinks: [
       { icon: 'x', link: 'https://x.com/HansHoveling' }
     ]
@@ -77,13 +78,6 @@ export default defineConfig({
   markdown: {
     config: (md) => {
       md.use(timeline);
-    }
-  },
-
-  // ✅ Add this block to help Vite handle vue3-calendar-heatmap
-  vite: {
-    optimizeDeps: {
-      include: ['vue3-calendar-heatmap']
     }
   }
 });

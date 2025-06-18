@@ -4,7 +4,7 @@ This Trading Journal serves as a structured record of my trading activities and 
 
 The goal of this journal is to facilitate continuous improvement through disciplined review and critical evaluation. By maintaining regular, detailed posts, I aim to enhance transparency, accountability, and learning in my trading practice.
 <div style="padding-top: 1rem;">
-    <CalendarHeatmap />
+    <CalendarHeatmapWrapper />
 </div>
 
 <details>
