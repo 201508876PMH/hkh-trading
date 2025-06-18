@@ -24,7 +24,7 @@ export default defineConfig({
         items: [
           { text: 'FTMO Challenge', link: '/ftmo/purpose' },
           { text: 'Performance', link: '/performance/performance' },
-          { text: 'Journal', link: '/journal/journal' }
+          { text: 'Journal', link: '/journal/2025/journal' }
         ]
       },
       { text: 'Goals & Milestones', link: '/goals/goals' },
@@ -48,12 +48,17 @@ export default defineConfig({
     ],
      '/journal/': [
       {
-        text: 'Journal',
+        text: 'Trading Journal',
         items: [
-          { text: 'Journal', link: '/journal/journal' },
-          { text: 'Overview', link: '/journal/overview' }
+          { 
+            text: '2025',
+            items: [
+              { text: 'Journal', link: '/journal/2025/journal' },
+              { text: 'Overview', link: '/journal/2025/overview' },
+            ]
+          }
         ]
-      }
+      },
     ],
      '/goals/': [
       {

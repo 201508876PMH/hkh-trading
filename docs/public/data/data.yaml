@@ -2,14 +2,14 @@
 - pair: GBP/JPY
   datetime: "2025-06-13 18:04"
   bias: Bullish
-  outcome: "Win"
+  outcome: "win"
   pl: "+2458"
   notes: "Limit på fib50, stop under fib50 (movede stop til PA candle)"
 
 - pair: ETH/USDT
   datetime: "2025-06-11 21:28"
   bias: Bearish
-  outcome: "Loss"
+  outcome: "loss"
   pl: "-1854"
   notes: "Bearish orderflow + liq. sweep"
 

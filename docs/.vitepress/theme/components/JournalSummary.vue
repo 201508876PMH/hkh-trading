@@ -16,7 +16,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       const trades = [...document.querySelectorAll("h2")].filter(h2 =>
-        /<span class="(win|loss)">.*[+-]€/.test(h2.innerHTML)
+        h2.textContent.match(/(win|loss)/i) && h2.textContent.match(/[+-]\d+/)
       )
 
       if (trades.length === 0) {
@@ -32,14 +32,18 @@ export default {
       let lossCount = 0
 
       trades.forEach(trade => {
-        const html = trade.innerHTML
-        const outcomeMatch = html.match(/class="(win|loss)"/)
-        const profitMatch = html.match(/[+-]€([0-9]+(?:\.[0-9]+)?)/)
+        const text = trade.textContent.trim()
 
-        if (!outcomeMatch || !profitMatch) return
+        const outcomeMatch = text.match(/\b(win|loss)\b/i)
+        const plMatches = [...text.matchAll(/([+-])\s?(\d+(?:\.\d+)?)/g)]
+        const lastMatch = plMatches.pop()
 
-        const outcome = outcomeMatch[1]
-        const profit = parseFloat(profitMatch[0].replace("€", ""))
+        if (!outcomeMatch || !lastMatch) return
+
+        const outcome = outcomeMatch[1].toLowerCase()
+        const sign = lastMatch[1]
+        const amount = parseFloat(lastMatch[2])
+        const profit = sign === '-' ? -amount : amount
 
         totalTrades++
         totalProfit += profit
@@ -47,8 +51,8 @@ export default {
         if (profit > maxProfit) maxProfit = profit
         if (profit < maxLoss) maxLoss = profit
 
-        if (outcome === "win") winCount++
-        if (outcome === "loss") lossCount++
+        if (outcome === 'win') winCount++
+        if (outcome === 'loss') lossCount++
       })
 
       const avgProfit = totalTrades ? totalProfit / totalTrades : 0
@@ -69,6 +73,7 @@ export default {
           </tbody>
         </table>
       `
+
       this.loading = false
     })
   }

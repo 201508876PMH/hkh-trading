@@ -100,6 +100,24 @@ const columnDefs = [
     field: 'notes',
     minWidth: 240,
   },
+  {
+    headerName: 'Link',
+    field: 'link',
+    minWidth: 250,
+    cellRenderer: (params) => {
+      const { datetime, outcome, pl } = params.data || {}
+      if (!datetime || !outcome || !pl) return ''
+
+      const year = datetime.slice(0, 4)
+      const formattedDatetime = datetime.replace(' ', '-').replace(':', '-')
+      const numericPart = Math.abs(parseFloat(pl)).toString()
+      const anchor = `_${formattedDatetime}-${outcome.toLowerCase()}-${numericPart}`
+      const url = `/hkh-trading/journal/${year}/journal.html#${anchor}`
+
+      return `<a href="${url}" style="color: var(--vp-c-brand); text-decoration: underline;">View</a>`
+    },
+    cellStyle: { textAlign: 'center' }
+  }
 ]
 
 // Create grid with autosizing on gridReady

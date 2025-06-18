@@ -1,6 +1,8 @@
 {
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "tippy.js": "^6.3.7",
+    "vitepress": "^1.6.3",
+    "vue3-calendar-heatmap": "^2.0.5"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",

@@ -1,79 +1,85 @@
 {
-  "hash": "e5b91e0b",
+  "hash": "aaf1e536",
   "configHash": "dabba475",
-  "lockfileHash": "1a067ba9",
-  "browserHash": "380bc797",
+  "lockfileHash": "86ef23bd",
+  "browserHash": "d95788bf",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "fc4bc7c1",
+      "fileHash": "7d75ef8c",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "e6e49780",
+      "fileHash": "24e0724b",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "879dbeb1",
+      "fileHash": "52db67d2",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "3aa6ea2b",
+      "fileHash": "6e3b4596",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "f3ca9f56",
+      "fileHash": "5fa4ef05",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "4161b657",
+      "fileHash": "b9aef32e",
       "needsInterop": false
     },
     "vue-chartjs": {
       "src": "../../../../node_modules/vue-chartjs/dist/index.js",
       "file": "vue-chartjs.js",
-      "fileHash": "7c5c6006",
+      "fileHash": "5294bb47",
       "needsInterop": false
     },
     "chart.js": {
       "src": "../../../../node_modules/chart.js/dist/chart.js",
       "file": "chart__js.js",
-      "fileHash": "f055e230",
+      "fileHash": "acaab519",
       "needsInterop": false
     },
     "chartjs-adapter-date-fns": {
       "src": "../../../../node_modules/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.esm.js",
       "file": "chartjs-adapter-date-fns.js",
-      "fileHash": "9971a8f1",
+      "fileHash": "1d9286b0",
       "needsInterop": false
     },
     "papaparse": {
       "src": "../../../../node_modules/papaparse/papaparse.min.js",
       "file": "papaparse.js",
-      "fileHash": "e6099d30",
+      "fileHash": "c411a447",
       "needsInterop": true
+    },
+    "vue3-calendar-heatmap": {
+      "src": "../../../../node_modules/vue3-calendar-heatmap/dist/vue3-calendar-heatmap.es.js",
+      "file": "vue3-calendar-heatmap.js",
+      "fileHash": "b0dee77e",
+      "needsInterop": false
     },
     "js-yaml": {
       "src": "../../../../node_modules/js-yaml/dist/js-yaml.mjs",
       "file": "js-yaml.js",
-      "fileHash": "984f0012",
+      "fileHash": "96088e38",
       "needsInterop": false
     },
     "ag-grid-community": {
       "src": "../../../../node_modules/ag-grid-community/dist/package/main.esm.mjs",
       "file": "ag-grid-community.js",
-      "fileHash": "24d8039e",
+      "fileHash": "19feda6f",
       "needsInterop": false
     }
   },
